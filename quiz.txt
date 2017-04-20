@@ -1,1 +1,28 @@
 
+PUNTO 1
+CREATE BIGFILE TABLESPACE big_tbs_juan DATAFILE
+'C:\oraclexe\app\oracle\oradata\JuanTB.dbf' size 1G,
+
+PUNTO 2
+CREATE TABLESPACE quiz DATAFILE
+'C:\oraclexe\app\oracle\oradata\quiz1.dbf' size 200M,
+'C:\oraclexe\app\oracle\oradata\quiz2.dbf' size 200M,
+'C:\oraclexe\app\oracle\oradata\quiz3.dbf' size 200M,
+AUTOEXTEND ON NEXT 600M MAXSIZE 1024M;
+
+PUNTO 3
+CREATE PROFILE Juan LIMIT
+CPU_LIFE_TIME     	UNLIMITED
+SESSIONS_PER_USER      UNLIMITED  
+IDLE_TIME              15
+FAILED_LOGIN_ATTEMPTS  UNLIMITED ;
+
+PUNTO 4
+CREATE USER USUARIO_JUAN
+IDENTIFIED BY USUARIO_JUAN
+DEFAULT TABLESPACE quiz
+PROFILE JUAN;
+
+PUNTO 5
+
+GRANT CREATE SESSION TO USUARIO_JUAN;
